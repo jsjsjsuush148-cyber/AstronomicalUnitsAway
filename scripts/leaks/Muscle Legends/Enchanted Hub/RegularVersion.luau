@@ -1131,7 +1131,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			end)
 		end)
 	end)(_Rocks)
-	_Rockz:AddLabel('--------------');
+	_Rocks:AddLabel('--------------');
 	(function(p223)
 		local function u228()
 			local v224, v225, v226 = pairs(game.Players.LocalPlayer.Backpack:GetChildren())
