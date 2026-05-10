@@ -1032,7 +1032,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 		end
 	end)
 	_TinyRock:Set(false)
-	rocksTab:AddLabel('Rocks V2:').TextSize = 22
+	_Rocks:AddLabel('Rocks V2:').TextSize = 22
 	(function(p202)
 		local function u207()
 			local v203, v204, v205 = pairs(game.Players.LocalPlayer.Backpack:GetChildren())
