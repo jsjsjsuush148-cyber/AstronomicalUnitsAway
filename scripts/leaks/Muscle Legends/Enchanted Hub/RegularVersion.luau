@@ -1088,7 +1088,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			},
 		}
 		local u209 = nil
-		local _SelectRock = p202:AddDropdown('Select Rock', function(p210)
+		local _SelectRock = _Rocks:AddDropdown('Select Rock', function(p210)
 			u209 = p210
 		end)
 		local v212, v213, v214 = pairs(u208)
@@ -1101,7 +1101,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			end
 			_SelectRock:Add(v214)
 		end
-		p202:AddSwitch('Farm The Rock', function(p217)
+		_Rocks:AddSwitch('Farm The Rock', function(p217)
 			getgenv().autoFarm = p217
 			task.spawn(function()
 				while getgenv().autoFarm do
@@ -1130,8 +1130,8 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end
 			end)
 		end)
-	end)(rocksTab)
-	rocksTab:AddLabel('--------------');
+	end)(_Rocks)
+	_Rockz:AddLabel('--------------');
 	(function(p223)
 		local function u228()
 			local v224, v225, v226 = pairs(game.Players.LocalPlayer.Backpack:GetChildren())
@@ -1187,7 +1187,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			},
 		}
 		local u230 = nil
-		local _SelectRock2 = tabFarming:AddDropdown('Select Rock', function(p231)
+		local _SelectRock2 = _Rocks:AddDropdown('Select Rock', function(p231)
 			u230 = p231
 		end)
 		local v233, v234, v235 = pairs(u229)
@@ -1200,7 +1200,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			end
 			_SelectRock2:Add(v235)
 		end
-		p223:AddSwitch('Start Farming', function(p238)
+		_Rocks:AddSwitch('Start Farming', function(p238)
 			getgenv().autoFarm = p238
 			task.spawn(function()
 				while getgenv().autoFarm do
@@ -1321,15 +1321,15 @@ ExecBtn.MouseButton1Up:Connect(function()
 			if v270 == nil then
 				break
 			end
-			p245:AddButton('Teleport ' .. u271, function()
+			_FarmV1:AddButton('Teleport ' .. u271, function()
 				local v272 = _G['selected' .. u271]
 				if v272 and u259[u271][v272] then
 					u254(u271, v272)
 				end
 			end)
 		end
-		p245:AddLabel('----------').TextSize = 22
-		p245:AddTextBox('Enter Rep Speed', function(p273)
+		_FarmV1:AddLabel('----------').TextSize = 22
+		_FarmV1:AddTextBox('Enter Rep Speed', function(p273)
 			local v274 = tonumber(p273)
 			if v274 and 0 < v274 then
 				getgenv().ThreadCount = v274
@@ -1338,7 +1338,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 				warn('Invalid number of threads entered.')
 			end
 		end)
-		p245:AddSwitch('Start Gaining Strength', function(p275)
+		_FarmV1:AddSwitch('Start Gaining Strength', function(p275)
 			getgenv().isGrinding = p275
 			if p275 then
 				for _ = 1, getgenv().ThreadCount do
@@ -1356,7 +1356,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end
 			end
 		end)
-		p245:AddButton('Anti-Lag', function()
+		_FarmV1:AddButton('Anti-Lag', function()
 			local _LocalPlayer14 = game.Players.LocalPlayer
 			local _PlayerGui = _LocalPlayer14:WaitForChild('PlayerGui')
 			local _Lighting = game:GetService('Lighting')
@@ -1442,45 +1442,45 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end)
 			end)()
 		end)
-		p245:AddLabel('---------------')
+		_FarmV1:AddLabel('---------------')
 		local _VirtualInputManager3 = game:GetService('VirtualInputManager')
-		p245:AddButton('Tiny Island', function()
+		_FarmV1:AddButton('Tiny Island', function()
 			local _LocalPlayer15 = game.Players.LocalPlayer;
 			(_LocalPlayer15.Character or _LocalPlayer15.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 37.1, 9.2, 1919)
 		end)
-		p245:AddButton('Main Island', function()
+		_FarmV1:AddButton('Main Island', function()
 			local _LocalPlayer16 = game.Players.LocalPlayer;
 			(_LocalPlayer16.Character or _LocalPlayer16.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(16.07, 9.08, 133.8)
 		end)
-		p245:AddButton('Beach', function()
+		_FarmV1:AddButton('Beach', function()
 			local _LocalPlayer17 = game.Players.LocalPlayer;
 			(_LocalPlayer17.Character or _LocalPlayer17.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 8, 9, - 169.2)
 		end)
-		p245:AddButton('Muscle King Gym', function()
+		_FarmV1:AddButton('Muscle King Gym', function()
 			local _LocalPlayer18 = game.Players.LocalPlayer;
 			(_LocalPlayer18.Character or _LocalPlayer18.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 8665.4, 17.21, - 5792.9)
 		end)
-		p245:AddButton('Jungle Gym', function()
+		_FarmV1:AddButton('Jungle Gym', function()
 			local _LocalPlayer19 = game.Players.LocalPlayer;
 			(_LocalPlayer19.Character or _LocalPlayer19.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 8543, 6.8, 2400)
 		end)
-		p245:AddButton('Legends Gym', function()
+		_FarmV1:AddButton('Legends Gym', function()
 			local _LocalPlayer20 = game.Players.LocalPlayer;
 			(_LocalPlayer20.Character or _LocalPlayer20.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(4516, 991.5, - 3856)
 		end)
-		p245:AddButton('Infernal Gym', function()
+		_FarmV1:AddButton('Infernal Gym', function()
 			local _LocalPlayer21 = game.Players.LocalPlayer;
 			(_LocalPlayer21.Character or _LocalPlayer21.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 6759, 7.36, - 1284)
 		end)
-		p245:AddButton('Mythical Gym', function()
+		_FarmV1:AddButton('Mythical Gym', function()
 			local _LocalPlayer22 = game.Players.LocalPlayer;
 			(_LocalPlayer22.Character or _LocalPlayer22.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(2250, 7.37, 1073.2)
 		end)
-		p245:AddButton('Frost Gym', function()
+		_FarmV1:AddButton('Frost Gym', function()
 			local _LocalPlayer23 = game.Players.LocalPlayer;
 			(_LocalPlayer23.Character or _LocalPlayer23.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 2623, 7.36, - 409)
 		end)
-		p245:AddButton('Jungle Lift', function()
+		_FarmV1:AddButton('Jungle Lift', function()
 			local _LocalPlayer24 = game.Players.LocalPlayer;
 			(_LocalPlayer24.Character or _LocalPlayer24.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 8642.396484375, 6.7980651855, 2086.1030273)
 			task.wait(0.2)
@@ -1488,7 +1488,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			task.wait(0.05)
 			_VirtualInputManager3:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 		end)
-		p245:AddButton('Jungle Squat', function()
+		_FarmV1:AddButton('Jungle Squat', function()
 			local _LocalPlayer25 = game.Players.LocalPlayer;
 			(_LocalPlayer25.Character or _LocalPlayer25.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 8371.43359375, 6.79806327, 2858.8852539)
 			task.wait(0.2)
@@ -1496,7 +1496,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			task.wait(0.05)
 			_VirtualInputManager3:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 		end)
-		p245:AddButton('King Lift', function()
+		_FarmV1:AddButton('King Lift', function()
 			local _LocalPlayer26 = game.Players.LocalPlayer;
 			(_LocalPlayer26.Character or _LocalPlayer26.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 8769.083, 17.219, - 5665.84228)
 			task.wait(0.2)
@@ -1504,7 +1504,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			task.wait(0.05)
 			_VirtualInputManager3:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 		end)
-		p245:AddButton('King Squat', function()
+		_FarmV1:AddButton('King Squat', function()
 			local _LocalPlayer27 = game.Players.LocalPlayer;
 			(_LocalPlayer27.Character or _LocalPlayer27.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(- 8762.1689, 17.219, - 6044.0498)
 			task.wait(0.2)
@@ -1512,7 +1512,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			task.wait(0.05)
 			_VirtualInputManager3:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 		end)
-		p245:AddButton('Legends Lift', function()
+		_FarmV1:AddButton('Legends Lift', function()
 			local _LocalPlayer28 = game.Players.LocalPlayer;
 			(_LocalPlayer28.Character or _LocalPlayer28.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(4528.474609375, 989.0000629425, - 4001.05151367)
 			task.wait(0.2)
@@ -1520,7 +1520,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			task.wait(0.05)
 			_VirtualInputManager3:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 		end)
-		p245:AddButton('Legends Squat', function()
+		_FarmV1:AddButton('Legends Squat', function()
 			local _LocalPlayer29 = game.Players.LocalPlayer;
 			(_LocalPlayer29.Character or _LocalPlayer29.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(4431.306152, 991.5455322, - 4051.4296)
 			task.wait(0.2)
@@ -1528,7 +1528,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			task.wait(0.05)
 			_VirtualInputManager3:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 		end)
-		p245:AddButton('Legends Pull Up', function()
+		_FarmV1:AddButton('Legends Pull Up', function()
 			local _LocalPlayer30 = game.Players.LocalPlayer;
 			(_LocalPlayer30.Character or _LocalPlayer30.CharacterAdded:Wait()):WaitForChild('HumanoidRootPart').CFrame = CFrame.new(4298.6323, 991.5404, - 4119.97363)
 			task.wait(0.2)
@@ -1536,8 +1536,8 @@ ExecBtn.MouseButton1Up:Connect(function()
 			task.wait(0.05)
 			_VirtualInputManager3:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 		end)
-		p245:AddLabel('Inventory Farm:').TextSize = 22
-		p245:AddSwitch('Auto Pushups', function(p316)
+		_FarmV1:AddLabel('Inventory Farm:').TextSize = 22
+		_FarmV1:AddSwitch('Auto Pushups', function(p316)
 			isAutoPushups = p316
 			local _LocalPlayer31 = game.Players.LocalPlayer
 			local _Backpack2 = _LocalPlayer31:FindFirstChild('Backpack')
@@ -1558,7 +1558,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end
 			end
 		end):Set(false)
-		p245:AddSwitch('Auto Situps', function(p321)
+		_FarmV1:AddSwitch('Auto Situps', function(p321)
 			isAutoSitups = p321
 			local _LocalPlayer32 = game.Players.LocalPlayer
 			local _Backpack3 = _LocalPlayer32:FindFirstChild('Backpack')
@@ -1579,7 +1579,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end
 			end
 		end):Set(false)
-		p245:AddSwitch('Auto Handstands', function(p326)
+		_FarmV1:AddSwitch('Auto Handstands', function(p326)
 			isAutoHandstands = p326
 			local _LocalPlayer33 = game.Players.LocalPlayer
 			local _Backpack4 = _LocalPlayer33:FindFirstChild('Backpack')
@@ -1600,9 +1600,9 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end
 			end
 		end):Set(false)
-		p245:AddLabel('OP Farms:').TextSize = 22
+		_FarmV1:AddLabel('OP Farms:').TextSize = 22
 		local u331 = nil
-		p245:AddSwitch('Fast Punch [ENABLE]', function(p332)
+		_FarmV1:AddSwitch('Fast Punch [ENABLE]', function(p332)
 			local _LocalPlayer34 = game.Players.LocalPlayer
 			if p332 then
 				_G.punchanim = true
@@ -1651,7 +1651,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end
 			end
 		end)
-		p245:AddSwitch('Auto Fast Pushups & Ancient Jungle Rock', function(p341)
+		_FarmV1:AddSwitch('Auto Fast Pushups & Ancient Jungle Rock', function(p341)
 			if p341 then
 				local _LocalPlayer35 = game.Players.LocalPlayer
 				local _LeftHand8 = (_LocalPlayer35.Character or _LocalPlayer35.CharacterAdded:Wait()):WaitForChild('LeftHand')
@@ -1738,7 +1738,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end
 			end
 		end):Set(false)
-		p245:AddSwitch('Auto Fast Pushups & Muscle King Rock', function(p360)
+		_FarmV1:AddSwitch('Auto Fast Pushups & Muscle King Rock', function(p360)
 			isAutoPushups = p360
 			_G.musclekingautorock = p360
 			local _LocalPlayer37 = game.Players.LocalPlayer
@@ -1815,7 +1815,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 				end
 			end
 		end):Set(false)
-		p245:AddLabel('Eggs:').TextSize = 22
+		_FarmV1:AddLabel('Eggs:').TextSize = 22
 		local u377 = false
 		local function u382()
 			local _LocalPlayer38 = game.Players.LocalPlayer
@@ -1838,7 +1838,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 				task.wait(1)
 			end
 		end)
-		p245:AddSwitch('Eat Egg (30 Min)', function(p383)
+		_FarmV1:AddSwitch('Eat Egg (30 Min)', function(p383)
 			u377 = p383
 		end)
 		local v384, v385, u386 = pairs({
@@ -1877,7 +1877,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 			if u386 == nil then
 				break
 			end
-			p245:AddButton(v397, function()
+			_FarmV1:AddButton(v397, function()
 				u396()
 				local v398, v399, v400 = pairs(game:GetService('Players').LocalPlayer.petsFolder.Unique:GetChildren())
 				while true do
