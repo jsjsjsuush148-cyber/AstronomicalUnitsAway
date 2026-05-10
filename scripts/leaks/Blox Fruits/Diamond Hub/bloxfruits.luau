@@ -448,7 +448,7 @@ ExecBtn.MouseButton1Up:Connect(function()
 	end)
 	hookfunction(require(game:GetService("ReplicatedStorage").Effect.Container.Respawn), function()
 	end)
-	local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/hluuvn/bloxfruit/refs/heads/main/Main%20diamond%20hub.lua"))()
+	local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 	Window = Fluent:CreateWindow({
 		Title = "💎Diamond Hub | DEOBFUSCATED BY VOIDDEVS",
 		SubTitle = "Blox Fruit | fuck ass stupid vietnamese nigga",
