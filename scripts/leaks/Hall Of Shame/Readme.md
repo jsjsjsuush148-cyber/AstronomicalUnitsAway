@@ -1,61 +1,50 @@
 # 🪦 VOIDDEVS HALL OF SHAME 🪦
 
-**Welcome to the graveyard.**
+**Welcome to the Hall of Shame.**
 
-Only the biggest, most pathetic frauds make it onto this list.  
-The only way your script ends up here is if you’re running **multiple games**, charging kids for dogshit menus, and we decide to **completely deobfuscate and expose** your entire catalog.
+This list is reserved for script developers who operate across **multiple games**, charge users, and rely on obfuscation. If your hub gets added here, it means we fully deobfuscated it and made it public.
 
-No small indie devs. No single-game scripts.  
-Only multi-game clowns who thought their obfuscation was safe.
+We only feature multi-game hubs that have been properly exposed. Single-game or small scripts do not qualify.
 
 ---
 
-### **#1 HALL OF SHAME LEGEND: iblameaabis (Enchanted Hub)**
+### **#1 HALL OF SHAME: iblameaabis (Enchanted Hub)**
 
-Poor fuck ass iblameaabis thought he was untouchable.  
-Doxxing people, leaking other devs scripts, acting like a tough guy…  
+iblameaabis became well known for doxxing others and leaking different developers' scripts.  
 
-Now look at him.
+As a result, **Enchanted Hub has been fully deobfuscated** across several games:
 
-**His entire Enchanted Hub empire got folded:**
+- **Muscle Legends** – PaidVersion + RegularVersion
+- **Ninja Legends**
+- **Steal A Brainrot**
+- **Legends of Speed**
 
-- **Muscle Legends** – PaidVersion + RegularVersion (both cooked)
-- **Ninja Legends** – Fully deobf
-- **Steal A Brainrot** – Fully deobf
-- **Legends of Speed** – Fully deobf
+**Total: 5 games exposed.**
 
-**Total: 5 games destroyed.**
-
-All that doxxing and snitching just to end up with your paid work posted for free on VoidDevs.  
-Karma is one hell of a bitch ain’t it?
+All versions are now publicly available.
 
 ---
 
-### **OTHER VICTIMS IN THE HALL:**
+### **OTHER NOTABLE ENTRIES:**
 
-- **Nebula Hub (ttvkaiser)** – 2 versions deobfuscated (v1.8.1 + v2.6.2)
-- **Duck Hub** – Got exposed with only 1 script (weak asf)
-- **Foki Hub** – Literally named “shittyassuniversal”
-- **Aio Hub** – Universal pack folded
-- **Diamond Hub (Blox Fruits)** – Caught a stray
+- **Nebula Hub (ttvkaiser)** – 2 versions deobfuscated (v1.8.1 and v2.6.2)
+- **Duck Hub** – Exposed
+- **Foki Hub** – Universal version deobfuscated
+- **Aio Hub** – Universal version exposed
+- **Diamond Hub (Blox Fruits)** – Fully deobfuscated
 
 ---
 
-**This list only grows.**  
-If you’re a multi-game dev charging for mid scripts and hiding behind obfuscation…  
-just know VoidDevs is watching.
+**This list continues to grow.**
 
-We don’t do one game.  
-We don’t do small leaks.  
-We wait until you’re big enough, then we **raze your whole shit** and serve it to every skidder for free.
+If you develop multi-game hubs and put heavy obfuscation on your scripts, there is a chance they will end up here. We focus on larger hubs that have spread across many games.
 
-**Moral of the story:**  
-Keep leaking and doxxing others and this is exactly what happens to you.
+**VoidDevs** will keep providing clean, deobfuscated sources to the community.
 
-**VoidDevs on top forever.**  
-We provide, we expose, we humiliate.
+We believe scripts should be accessible. No more paid gates on mediocre menus.
 
-**Rest in piss to every name that ends up here.** 🖕
+**VoidDevs on top.**  
+We deliver what others try to hide.
 
-*Updated: May 2026*  
-*Current body count: 11+ scripts across multiple games*
+*Last updated: May 2026*  
+*Current total exposed: 11+ scripts*
