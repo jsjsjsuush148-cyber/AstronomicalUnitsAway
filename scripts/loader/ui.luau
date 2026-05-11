@@ -2018,6 +2018,135 @@ function Library:NewWindow(ConfigWindow)
 				end
 				return ListFunc
 			end
+            function SectionFunc:AddStats(cfstats)
+	local cfstats = Library:MakeConfig({
+		Title = "Stats < Missing Title >",
+		StatsList = {}
+	}, cfstats or {})
+
+	local Stats = Instance.new("Frame")
+	local StatsCorner = Instance.new("UICorner")
+	local StatsPadding = Instance.new("UIPadding")
+	local StatsTitle = Instance.new("TextLabel")
+	local StatsHolder = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+
+	local StatsFunc = {}
+	local StatObjects = {}
+
+	Stats.Name = "Stats"
+	Stats.Parent = SectionList
+	Stats.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Stats.BackgroundTransparency = 0.950
+	Stats.BorderSizePixel = 0
+	Stats.Size = UDim2.new(1, 0, 0, 0)
+	Stats.AutomaticSize = Enum.AutomaticSize.Y
+
+	StatsCorner.CornerRadius = UDim.new(0, 3)
+	StatsCorner.Parent = Stats
+
+	StatsPadding.Parent = Stats
+	StatsPadding.PaddingLeft = UDim.new(0, 10)
+	StatsPadding.PaddingRight = UDim.new(0, 10)
+	StatsPadding.PaddingTop = UDim.new(0, 7)
+	StatsPadding.PaddingBottom = UDim.new(0, 10)
+
+	StatsTitle.Name = "Title"
+	StatsTitle.Parent = Stats
+	StatsTitle.BackgroundTransparency = 1
+	StatsTitle.Size = UDim2.new(1, 0, 0, 16)
+	StatsTitle.Font = Enum.Font.GothamBold
+	StatsTitle.Text = cfstats.Title
+	StatsTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	StatsTitle.TextSize = 13
+	StatsTitle.RichText = true
+	StatsTitle.TextXAlignment = Enum.TextXAlignment.Left
+	StatsTitle.TextWrapped = true
+
+	StatsHolder.Name = "StatsHolder"
+	StatsHolder.Parent = Stats
+	StatsHolder.BackgroundTransparency = 1
+	StatsHolder.Position = UDim2.new(0, 0, 0, 22)
+	StatsHolder.Size = UDim2.new(1, 0, 0, 0)
+	StatsHolder.AutomaticSize = Enum.AutomaticSize.Y
+
+	UIListLayout.Parent = StatsHolder
+	UIListLayout.Padding = UDim.new(0, 4)
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+	local function CreateStat(id, data)
+		local Row = Instance.new("Frame")
+		local NameLabel = Instance.new("TextLabel")
+		local ValueLabel = Instance.new("TextLabel")
+
+		Row.Name = id
+		Row.Parent = StatsHolder
+		Row.BackgroundTransparency = 1
+		Row.Size = UDim2.new(1, 0, 0, 14)
+
+		NameLabel.Name = "Name"
+		NameLabel.Parent = Row
+		NameLabel.BackgroundTransparency = 1
+		NameLabel.Size = UDim2.new(0.5, 0, 1, 0)
+		NameLabel.Font = Enum.Font.GothamBold
+		NameLabel.Text = data.Name or id
+		NameLabel.TextColor3 = Color3.fromRGB(100, 100, 100)
+		NameLabel.TextSize = 12
+		NameLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+		ValueLabel.Name = "Value"
+		ValueLabel.Parent = Row
+		ValueLabel.BackgroundTransparency = 1
+		ValueLabel.Position = UDim2.new(0.5, 0, 0, 0)
+		ValueLabel.Size = UDim2.new(0.5, 0, 1, 0)
+		ValueLabel.Font = Enum.Font.GothamBold
+		ValueLabel.Text = data.Value or ""
+		ValueLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+		ValueLabel.TextSize = 12
+		ValueLabel.TextXAlignment = Enum.TextXAlignment.Right
+
+		StatObjects[id] = {
+			Row = Row,
+			Name = NameLabel,
+			Value = ValueLabel
+		}
+	end
+
+	for id, data in pairs(cfstats.StatsList) do
+		CreateStat(id, data)
+	end
+
+	function StatsFunc:SetTitle(text)
+		StatsTitle.Text = text
+	end
+
+	function StatsFunc:SetValue(id, value)
+		if StatObjects[id] then
+			StatObjects[id].Value.Text = tostring(value)
+		end
+	end
+
+	function StatsFunc:SetName(id, name)
+		if StatObjects[id] then
+			StatObjects[id].Name.Text = tostring(name)
+		end
+	end
+
+	function StatsFunc:AddStat(id, data)
+		if not StatObjects[id] then
+			CreateStat(id, data)
+		end
+	end
+
+	function StatsFunc:RemoveStat(id)
+		if StatObjects[id] then
+			StatObjects[id].Row:Destroy()
+			StatObjects[id] = nil
+		end
+	end
+
+	return StatsFunc
+end
 			return SectionFunc
 		end
 		return TabFunc
