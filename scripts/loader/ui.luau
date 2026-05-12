@@ -2294,8 +2294,8 @@ function SectionFunc:AddKeybind(cfkeybind)
 	local Keybind = Instance.new("Frame")
 	local KeybindCorner = Instance.new("UICorner")
 	local KeybindPadding = Instance.new("UIPadding")
-	local Title = Instance.new("TextLabel")
-	local Desc = Instance.new("TextLabel")
+	local KeyTitle = Instance.new("TextLabel")
+	local KeyDesc = Instance.new("TextLabel")
 	local BindButton = Instance.new("TextButton")
 
 	local KeybindFunc = {}
@@ -2320,26 +2320,26 @@ function SectionFunc:AddKeybind(cfkeybind)
 	KeybindPadding.PaddingTop = UDim.new(0, 6)
 	KeybindPadding.PaddingBottom = UDim.new(0, 6)
 
-	Title.Name = "Title"
-	Title.Parent = Keybind
-	Title.BackgroundTransparency = 1
-	Title.Size = UDim2.new(0.5, 0, 0, 16)
-	Title.Font = Enum.Font.GothamBold
-	Title.Text = cfkeybind.Title
-	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Title.TextSize = 13
-	Title.TextXAlignment = Enum.TextXAlignment.Left
+	KeyTitle.Name = "Title"
+	KeyTitle.Parent = Keybind
+	KeyTitle.BackgroundTransparency = 1
+	KeyTitle.Size = UDim2.new(0.5, 0, 0, 16)
+	KeyTitle.Font = Enum.Font.GothamBold
+	KeyTitle.Text = cfkeybind.Title
+	KeyTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	KeyTitle.TextSize = 13
+	KeyTitle.TextXAlignment = Enum.TextXAlignment.Left
 
-	Desc.Name = "Desc"
-	Desc.Parent = Keybind
-	Desc.BackgroundTransparency = 1
-	Desc.Position = UDim2.new(0, 0, 0, 18)
-	Desc.Size = UDim2.new(0.5, 0, 0, 14)
-	Desc.Font = Enum.Font.GothamBold
-	Desc.Text = cfkeybind.Desc
-	Desc.TextColor3 = Color3.fromRGB(120, 120, 120)
-	Desc.TextSize = 12
-	Desc.TextXAlignment = Enum.TextXAlignment.Left
+	KeyDesc.Name = "Desc"
+	KeyDesc.Parent = Keybind
+	KeyDesc.BackgroundTransparency = 1
+	KeyDesc.Position = UDim2.new(0, 0, 0, 18)
+	KeyDesc.Size = UDim2.new(0.5, 0, 0, 14)
+	KeyDesc.Font = Enum.Font.GothamBold
+	KeyDesc.Text = cfkeybind.Desc
+	KeyDesc.TextColor3 = Color3.fromRGB(120, 120, 120)
+	KeyDesc.TextSize = 12
+	KeyDesc.TextXAlignment = Enum.TextXAlignment.Left
 
 	BindButton.Name = "BindButton"
 	BindButton.Parent = Keybind
@@ -2384,11 +2384,11 @@ function SectionFunc:AddKeybind(cfkeybind)
 	end)
 
 	function KeybindFunc:SetTitle(text)
-		Title.Text = tostring(text)
+		KeyTitle.Text = tostring(text)
 	end
 
 	function KeybindFunc:SetDesc(text)
-		Desc.Text = tostring(text)
+		KeyDesc.Text = tostring(text)
 	end
 
 	function KeybindFunc:SetKey(key)
