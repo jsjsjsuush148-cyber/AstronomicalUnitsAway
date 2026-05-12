@@ -2157,6 +2157,7 @@ function SectionFunc:AddChangelogs(cfchangelogs)
 
 	local Changelogs = Instance.new("Frame")
 	local ChangelogCorner = Instance.new("UICorner")
+    local ChangelogCornerTwo = Instance.new("UICorner")
 	local ChangelogPadding = Instance.new("UIPadding")
 	local ChangelogTitle = Instance.new("TextLabel")
 	local VersionLabel = Instance.new("TextLabel")
@@ -2205,7 +2206,7 @@ function SectionFunc:AddChangelogs(cfchangelogs)
 
 	LogsHolder.Name = "LogsHolder"
 	LogsHolder.Parent = Changelogs
-	LogsHolder.BackgroundTransparency = 1
+	LogsHolder.BackgroundTransparency = 0.9
 	LogsHolder.BorderSizePixel = 0
 	LogsHolder.Position = UDim2.new(0, 0, 0, 24)
 	LogsHolder.Size = UDim2.new(1, 0, 0, 90)
@@ -2214,6 +2215,9 @@ function SectionFunc:AddChangelogs(cfchangelogs)
 	LogsHolder.ScrollBarThickness = 3
 	LogsHolder.ScrollBarImageColor3 = Color3.fromRGB(120, 120, 120)
 	LogsHolder.ScrollingDirection = Enum.ScrollingDirection.XY
+
+    ChangelogCornerTwo.CornerRadius = UDim.new(0,3)
+    ChangelogCornerTwo.Parent = LogsHolder
 
 	LogsLayout.Parent = LogsHolder
 	LogsLayout.Padding = UDim.new(0, 3)
