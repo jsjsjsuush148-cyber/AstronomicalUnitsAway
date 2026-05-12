@@ -2281,6 +2281,127 @@ function SectionFunc:AddChangelogs(cfchangelogs)
 
 	return ChangelogFunc
 end
+function SectionFunc:AddKeybind(cfkeybind)
+	local cfkeybind = Library:MakeConfig({
+		Title = "Keybind",
+		Desc = "",
+		Default = Enum.KeyCode.RightShift,
+		Callback = function() end
+	}, cfkeybind or {})
+
+	local UIS = game:GetService("UserInputService")
+
+	local Keybind = Instance.new("Frame")
+	local KeybindCorner = Instance.new("UICorner")
+	local KeybindPadding = Instance.new("UIPadding")
+	local Title = Instance.new("TextLabel")
+	local Desc = Instance.new("TextLabel")
+	local BindButton = Instance.new("TextButton")
+
+	local KeybindFunc = {}
+
+	local CurrentKey = cfkeybind.Default
+	local Listening = false
+
+	Keybind.Name = "Keybind"
+	Keybind.Parent = SectionList
+	Keybind.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Keybind.BackgroundTransparency = 0.950
+	Keybind.BorderSizePixel = 0
+	Keybind.Size = UDim2.new(1, 0, 0, 45)
+	Keybind.AutomaticSize = Enum.AutomaticSize.Y
+
+	KeybindCorner.CornerRadius = UDim.new(0, 3)
+	KeybindCorner.Parent = Keybind
+
+	KeybindPadding.Parent = Keybind
+	KeybindPadding.PaddingLeft = UDim.new(0, 10)
+	KeybindPadding.PaddingRight = UDim.new(0, 10)
+	KeybindPadding.PaddingTop = UDim.new(0, 6)
+	KeybindPadding.PaddingBottom = UDim.new(0, 6)
+
+	Title.Name = "Title"
+	Title.Parent = Keybind
+	Title.BackgroundTransparency = 1
+	Title.Size = UDim2.new(0.5, 0, 0, 16)
+	Title.Font = Enum.Font.GothamBold
+	Title.Text = cfkeybind.Title
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextSize = 13
+	Title.TextXAlignment = Enum.TextXAlignment.Left
+
+	Desc.Name = "Desc"
+	Desc.Parent = Keybind
+	Desc.BackgroundTransparency = 1
+	Desc.Position = UDim2.new(0, 0, 0, 18)
+	Desc.Size = UDim2.new(0.5, 0, 0, 14)
+	Desc.Font = Enum.Font.GothamBold
+	Desc.Text = cfkeybind.Desc
+	Desc.TextColor3 = Color3.fromRGB(120, 120, 120)
+	Desc.TextSize = 12
+	Desc.TextXAlignment = Enum.TextXAlignment.Left
+
+	BindButton.Name = "BindButton"
+	BindButton.Parent = Keybind
+	BindButton.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+	BindButton.BorderSizePixel = 0
+	BindButton.Position = UDim2.new(1, -80, 0.5, -10)
+	BindButton.Size = UDim2.new(0, 80, 0, 20)
+	BindButton.Font = Enum.Font.GothamBold
+	BindButton.Text = CurrentKey.Name
+	BindButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+	BindButton.TextSize = 12
+
+	local BindCorner = Instance.new("UICorner")
+	BindCorner.CornerRadius = UDim.new(0, 3)
+	BindCorner.Parent = BindButton
+
+	BindButton.MouseButton1Click:Connect(function()
+		if Listening then return end
+
+		Listening = true
+		BindButton.Text = "..."
+
+		local Connection
+		Connection = UIS.InputBegan:Connect(function(input, gameProcessed)
+			if gameProcessed then return end
+
+			if input.UserInputType == Enum.UserInputType.Keyboard then
+				CurrentKey = input.KeyCode
+				BindButton.Text = CurrentKey.Name
+				Listening = false
+				Connection:Disconnect()
+			end
+		end)
+	end)
+
+	UIS.InputBegan:Connect(function(input, gameProcessed)
+		if gameProcessed then return end
+
+		if input.KeyCode == CurrentKey then
+			cfkeybind.Callback()
+		end
+	end)
+
+	function KeybindFunc:SetTitle(text)
+		Title.Text = tostring(text)
+	end
+
+	function KeybindFunc:SetDesc(text)
+		Desc.Text = tostring(text)
+	end
+
+	function KeybindFunc:SetKey(key)
+		CurrentKey = key
+		BindButton.Text = key.Name
+	end
+
+	function KeybindFunc:GetKey()
+		return CurrentKey
+	end
+
+	return KeybindFunc
+end
 			return SectionFunc
 		end
 		return TabFunc
