@@ -2147,6 +2147,136 @@ function Library:NewWindow(ConfigWindow)
 
 	return StatsFunc
 end
+function SectionFunc:AddChangelogs(cfchangelogs)
+	local cfchangelogs = Library:MakeConfig({
+		Title = "Changelogs",
+		PrevVersion = "v0.0",
+		NewVersion = "v0.1",
+		Lines = {}
+	}, cfchangelogs or {})
+
+	local Changelogs = Instance.new("Frame")
+	local ChangelogCorner = Instance.new("UICorner")
+	local ChangelogPadding = Instance.new("UIPadding")
+	local ChangelogTitle = Instance.new("TextLabel")
+	local VersionLabel = Instance.new("TextLabel")
+	local LogsHolder = Instance.new("ScrollingFrame")
+	local LogsLayout = Instance.new("UIListLayout")
+
+	local ChangelogFunc = {}
+
+	Changelogs.Name = "Changelogs"
+	Changelogs.Parent = SectionList
+	Changelogs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Changelogs.BackgroundTransparency = 0.950
+	Changelogs.BorderSizePixel = 0
+	Changelogs.Size = UDim2.new(1, 0, 0, 0)
+	Changelogs.AutomaticSize = Enum.AutomaticSize.Y
+
+	ChangelogCorner.CornerRadius = UDim.new(0, 3)
+	ChangelogCorner.Parent = Changelogs
+
+	ChangelogPadding.Parent = Changelogs
+	ChangelogPadding.PaddingLeft = UDim.new(0, 10)
+	ChangelogPadding.PaddingRight = UDim.new(0, 10)
+	ChangelogPadding.PaddingTop = UDim.new(0, 7)
+	ChangelogPadding.PaddingBottom = UDim.new(0, 10)
+
+	ChangelogTitle.Name = "Title"
+	ChangelogTitle.Parent = Changelogs
+	ChangelogTitle.BackgroundTransparency = 1
+	ChangelogTitle.Size = UDim2.new(0.5, 0, 0, 16)
+	ChangelogTitle.Font = Enum.Font.GothamBold
+	ChangelogTitle.Text = cfchangelogs.Title
+	ChangelogTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	ChangelogTitle.TextSize = 13
+	ChangelogTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	VersionLabel.Name = "Version"
+	VersionLabel.Parent = Changelogs
+	VersionLabel.BackgroundTransparency = 1
+	VersionLabel.Position = UDim2.new(0.5, 0, 0, 0)
+	VersionLabel.Size = UDim2.new(0.5, 0, 0, 16)
+	VersionLabel.Font = Enum.Font.GothamBold
+	VersionLabel.Text = cfchangelogs.PrevVersion .. " >> " .. cfchangelogs.NewVersion
+	VersionLabel.TextColor3 = Color3.fromRGB(100, 100, 100)
+	VersionLabel.TextSize = 12
+	VersionLabel.TextXAlignment = Enum.TextXAlignment.Right
+
+	LogsHolder.Name = "LogsHolder"
+	LogsHolder.Parent = Changelogs
+	LogsHolder.BackgroundTransparency = 1
+	LogsHolder.BorderSizePixel = 0
+	LogsHolder.Position = UDim2.new(0, 0, 0, 24)
+	LogsHolder.Size = UDim2.new(1, 0, 0, 90)
+	LogsHolder.CanvasSize = UDim2.new(0, 0, 0, 0)
+	LogsHolder.AutomaticCanvasSize = Enum.AutomaticSize.Y
+	LogsHolder.ScrollBarThickness = 3
+	LogsHolder.ScrollBarImageColor3 = Color3.fromRGB(120, 120, 120)
+	LogsHolder.ScrollingDirection = Enum.ScrollingDirection.XY
+
+	LogsLayout.Parent = LogsHolder
+	LogsLayout.Padding = UDim.new(0, 3)
+	LogsLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+	local function GetPrefix(logType)
+		if logType == "Add" then
+			return "<font color='rgb(0,255,0)'>[+]</font>"
+		elseif logType == "Remove" then
+			return "<font color='rgb(255,0,0)'>[-]</font>"
+		elseif logType == "Change" then
+			return "<font color='rgb(255,170,0)'>[/]</font>"
+		elseif logType == "Fix" then
+			return "<font color='rgb(0,170,255)'>[*]</font>"
+		end
+
+		return "[?]"
+	end
+
+	for _, logData in ipairs(cfchangelogs.Lines) do
+		local LogLine = Instance.new("TextLabel")
+
+		LogLine.Parent = LogsHolder
+		LogLine.BackgroundTransparency = 1
+		LogLine.AutomaticSize = Enum.AutomaticSize.XY
+		LogLine.Size = UDim2.new(0, 0, 0, 14)
+		LogLine.Font = Enum.Font.GothamBold
+		LogLine.RichText = true
+		LogLine.Text = GetPrefix(logData.Type) .. " " .. tostring(logData.Desc)
+		LogLine.TextColor3 = Color3.fromRGB(220, 220, 220)
+		LogLine.TextSize = 12
+		LogLine.TextXAlignment = Enum.TextXAlignment.Left
+	end
+
+	LogsLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+		LogsHolder.CanvasSize = UDim2.new(0, LogsLayout.AbsoluteContentSize.X, 0, LogsLayout.AbsoluteContentSize.Y)
+	end)
+
+	function ChangelogFunc:SetTitle(text)
+		ChangelogTitle.Text = tostring(text)
+	end
+
+	function ChangelogFunc:SetVersions(oldVersion, newVersion)
+		VersionLabel.Text = tostring(oldVersion) .. " >> " .. tostring(newVersion)
+	end
+
+	function ChangelogFunc:AddLine(data)
+		local LogLine = Instance.new("TextLabel")
+
+		LogLine.Parent = LogsHolder
+		LogLine.BackgroundTransparency = 1
+		LogLine.AutomaticSize = Enum.AutomaticSize.XY
+		LogLine.Size = UDim2.new(0, 0, 0, 14)
+		LogLine.Font = Enum.Font.GothamBold
+		LogLine.RichText = true
+		LogLine.Text = GetPrefix(data.Type) .. " " .. tostring(data.Desc)
+		LogLine.TextColor3 = Color3.fromRGB(220, 220, 220)
+		LogLine.TextSize = 12
+		LogLine.TextXAlignment = Enum.TextXAlignment.Left
+	end
+
+	return ChangelogFunc
+end
 			return SectionFunc
 		end
 		return TabFunc
