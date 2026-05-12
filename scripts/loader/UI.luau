@@ -70,6 +70,197 @@ function Library:MakeDraggable(topbarobject, object)
 		end
 	end)
 end
+function Library:Notify(cfnotify)
+	local cfnotify = self:MakeConfig({
+		Title = "Notification",
+		Desc = "",
+		Closeable = true,
+		Duration = 5,
+		Buttons = {}
+	}, cfnotify or {})
+
+	local TweenService = game:GetService("TweenService")
+
+	if not self.NotificationHolder then
+		local NotificationHolder = Instance.new("Frame")
+		local UIListLayout = Instance.new("UIListLayout")
+		local UIPadding = Instance.new("UIPadding")
+
+		NotificationHolder.Name = "NotificationHolder"
+		NotificationHolder.Parent = ScreenGui
+		NotificationHolder.BackgroundTransparency = 1
+		NotificationHolder.AnchorPoint = Vector2.new(1, 1)
+		NotificationHolder.Position = UDim2.new(1, -15, 1, -15)
+		NotificationHolder.Size = UDim2.new(0, 320, 1, -30)
+
+		UIListLayout.Parent = NotificationHolder
+		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+		UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Bottom
+		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+		UIListLayout.Padding = UDim.new(0, 8)
+
+		UIPadding.Parent = NotificationHolder
+		UIPadding.PaddingTop = UDim.new(0, 5)
+		UIPadding.PaddingBottom = UDim.new(0, 5)
+
+		self.NotificationHolder = NotificationHolder
+	end
+
+	local Notification = Instance.new("Frame")
+	local NotificationCorner = Instance.new("UICorner")
+	local NotificationStroke = Instance.new("UIStroke")
+	local NotificationPadding = Instance.new("UIPadding")
+	local NotificationTitle = Instance.new("TextLabel")
+	local NotificationDesc = Instance.new("TextLabel")
+	local ButtonHolder = Instance.new("Frame")
+	local ButtonLayout = Instance.new("UIListLayout")
+	local NotificationClose = Instance.new("TextButton")
+
+	local NotificationFunc = {}
+
+	Notification.Name = "Notification"
+	Notification.Parent = self.NotificationHolder
+	Notification.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+	Notification.BorderSizePixel = 0
+	Notification.Size = UDim2.new(0, 0, 0, 0)
+	Notification.AutomaticSize = Enum.AutomaticSize.Y
+	Notification.ClipsDescendants = true
+
+	NotificationCorner.CornerRadius = UDim.new(0, 6)
+	NotificationCorner.Parent = Notification
+
+	NotificationStroke.Parent = Notification
+	NotificationStroke.Color = Color3.fromRGB(40, 40, 40)
+	NotificationStroke.Thickness = 1
+
+	NotificationPadding.Parent = Notification
+	NotificationPadding.PaddingLeft = UDim.new(0, 12)
+	NotificationPadding.PaddingRight = UDim.new(0, 12)
+	NotificationPadding.PaddingTop = UDim.new(0, 10)
+	NotificationPadding.PaddingBottom = UDim.new(0, 10)
+
+	NotificationTitle.Name = "NotificationTitle"
+	NotificationTitle.Parent = Notification
+	NotificationTitle.BackgroundTransparency = 1
+	NotificationTitle.Size = UDim2.new(1, -25, 0, 16)
+	NotificationTitle.Font = Enum.Font.GothamBold
+	NotificationTitle.Text = cfnotify.Title
+	NotificationTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	NotificationTitle.TextSize = 14
+	NotificationTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	NotificationDesc.Name = "NotificationDesc"
+	NotificationDesc.Parent = Notification
+	NotificationDesc.BackgroundTransparency = 1
+	NotificationDesc.Position = UDim2.new(0, 0, 0, 20)
+	NotificationDesc.Size = UDim2.new(1, 0, 0, 0)
+	NotificationDesc.AutomaticSize = Enum.AutomaticSize.Y
+	NotificationDesc.Font = Enum.Font.Gotham
+	NotificationDesc.Text = cfnotify.Desc
+	NotificationDesc.TextColor3 = Color3.fromRGB(180, 180, 180)
+	NotificationDesc.TextSize = 12
+	NotificationDesc.TextWrapped = true
+	NotificationDesc.TextXAlignment = Enum.TextXAlignment.Left
+	NotificationDesc.TextYAlignment = Enum.TextYAlignment.Top
+
+	ButtonHolder.Name = "ButtonHolder"
+	ButtonHolder.Parent = Notification
+	ButtonHolder.BackgroundTransparency = 1
+	ButtonHolder.Position = UDim2.new(0, 0, 0, 0)
+	ButtonHolder.Size = UDim2.new(1, 0, 0, 0)
+	ButtonHolder.AutomaticSize = Enum.AutomaticSize.Y
+
+	ButtonLayout.Parent = ButtonHolder
+	ButtonLayout.FillDirection = Enum.FillDirection.Horizontal
+	ButtonLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+	ButtonLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	ButtonLayout.Padding = UDim.new(0, 6)
+
+	task.defer(function()
+		ButtonHolder.Position = UDim2.new(0, 0, 0, NotificationDesc.AbsolutePosition.Y - Notification.AbsolutePosition.Y + NotificationDesc.AbsoluteSize.Y + 8)
+	end)
+
+	for _, buttonData in ipairs(cfnotify.Buttons) do
+		local Button = Instance.new("TextButton")
+		local ButtonCorner = Instance.new("UICorner")
+
+		Button.Parent = ButtonHolder
+		Button.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+		Button.BorderSizePixel = 0
+		Button.Size = UDim2.new(0, 80, 0, 24)
+		Button.Font = Enum.Font.GothamBold
+		Button.Text = tostring(buttonData.Name)
+		Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+		Button.TextSize = 12
+
+		ButtonCorner.CornerRadius = UDim.new(0, 4)
+		ButtonCorner.Parent = Button
+
+		Button.MouseButton1Click:Connect(function()
+			if buttonData.Callback then
+				buttonData.Callback()
+			end
+		end)
+	end
+
+	if cfnotify.Closeable then
+		NotificationClose.Name = "NotificationClose"
+		NotificationClose.Parent = Notification
+		NotificationClose.BackgroundTransparency = 1
+		NotificationClose.Position = UDim2.new(1, -18, 0, 0)
+		NotificationClose.Size = UDim2.new(0, 18, 0, 18)
+		NotificationClose.Font = Enum.Font.GothamBold
+		NotificationClose.Text = "✕"
+		NotificationClose.TextColor3 = Color3.fromRGB(160, 160, 160)
+		NotificationClose.TextSize = 13
+
+		NotificationClose.MouseButton1Click:Connect(function()
+			TweenService:Create(Notification, TweenInfo.new(0.2), {
+				Size = UDim2.new(0, 0, 0, Notification.AbsoluteSize.Y)
+			}):Play()
+
+			task.wait(0.2)
+
+			Notification:Destroy()
+		end)
+	end
+
+	task.wait()
+
+	TweenService:Create(Notification, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		Size = UDim2.new(0, 300, 0, Notification.AbsoluteSize.Y)
+	}):Play()
+
+	if cfnotify.Duration and cfnotify.Duration > 0 then
+		task.delay(cfnotify.Duration, function()
+			if Notification and Notification.Parent then
+				TweenService:Create(Notification, TweenInfo.new(0.2), {
+					Size = UDim2.new(0, 0, 0, Notification.AbsoluteSize.Y)
+				}):Play()
+
+				task.wait(0.2)
+
+				if Notification then
+					Notification:Destroy()
+				end
+			end
+		end)
+	end
+
+	function NotificationFunc:Close()
+		if Notification then
+			TweenService:Create(Notification, TweenInfo.new(0.2), {
+				Size = UDim2.new(0, 0, 0, Notification.AbsoluteSize.Y)
+			}):Play()
+
+			task.wait(0.2)
+
+			Notification:Destroy()
+		end
+	end
+
+	return NotificationFunc
+end
 function Library:NewWindow(ConfigWindow)
 	local function GetIcon(input)
 		if not input then
