@@ -372,31 +372,69 @@ function Library:NewWindow(ConfigWindow)
 	Minize.Selectable = false
 	Minize.Size = UDim2.new(0, 30, 0, 30)
 	Minize.Text = ""
-	local rpnBtn_cfgs = ConfigWindow.ReopenButton
-	local G2L = {};
-	G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
-	G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
-	G2L["1"].ResetOnSpawn = false;
-	G2L["2"] = Instance.new("ImageButton", G2L["1"]);
-	G2L["2"]["BorderSizePixel"] = 0;
-	G2L["2"].Visible = true
-	self:MakeDraggable(G2L["2"], G2L["2"])
-	G2L["2"]["BackgroundColor3"] = rpnBtn_cfgs.ButtonBackgroundColor;
-	G2L["2"]["Image"] = rpnBtn_cfgs.ButtonIcon;
-	G2L["2"]["Size"] = rpnBtn_cfgs.ButtonSize;
-	G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
-	G2L["2"]["Position"] = rpnBtn_cfgs.ButtonPosition;
-	G2L["3"] = Instance.new("UICorner", G2L["2"]);
-	G2L["3"]["CornerRadius"] = UDim.new(0, 8);
-	G2L["4"] = Instance.new("UIStroke", G2L["2"]);
-	G2L["4"]["Thickness"] = 2;
-	G2L["4"]["Color"] = rpnBtn_cfgs.ButtonColorStroke;
-	G2L["2"].MouseButton1Click:Connect(function()
-		vui.Enabled = not vui.Enabled
-	end)
-	Minize.MouseButton1Click:Connect(function()
-		vui.Enabled = false
-	end)
+	local TweenService = game:GetService("TweenService")
+
+local rpnBtn_cfgs = ConfigWindow.ReopenButton
+local G2L = {};
+
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+G2L["1"].ResetOnSpawn = false;
+
+G2L["2"] = Instance.new("ImageButton", G2L["1"]);
+G2L["2"]["BorderSizePixel"] = 0;
+G2L["2"].Visible = true
+
+self:MakeDraggable(G2L["2"], G2L["2"])
+
+G2L["2"]["BackgroundColor3"] = rpnBtn_cfgs.ButtonBackgroundColor;
+G2L["2"]["Image"] = rpnBtn_cfgs.ButtonIcon;
+G2L["2"]["Size"] = rpnBtn_cfgs.ButtonSize;
+G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2"]["Position"] = rpnBtn_cfgs.ButtonPosition;
+
+G2L["3"] = Instance.new("UICorner", G2L["2"]);
+G2L["3"]["CornerRadius"] = UDim.new(0, 8);
+
+G2L["4"] = Instance.new("UIStroke", G2L["2"]);
+G2L["4"]["Thickness"] = 2;
+G2L["4"]["Color"] = rpnBtn_cfgs.ButtonColorStroke;
+
+local originalSize = G2L["2"].Size
+local shrinkSize = UDim2.new(
+	originalSize.X.Scale * 0.9,
+	originalSize.X.Offset * 0.9,
+	originalSize.Y.Scale * 0.9,
+	originalSize.Y.Offset * 0.9
+)
+
+local shrinkTween = TweenService:Create(
+	G2L["2"],
+	TweenInfo.new(0.08, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+	{Size = shrinkSize}
+)
+
+local expandTween = TweenService:Create(
+	G2L["2"],
+	TweenInfo.new(0.12, Enum.EasingStyle.Back, Enum.EasingDirection.Out),
+	{Size = originalSize}
+)
+
+G2L["2"].MouseButton1Down:Connect(function()
+	shrinkTween:Play()
+end)
+
+G2L["2"].MouseButton1Up:Connect(function()
+	expandTween:Play()
+end)
+
+G2L["2"].MouseButton1Click:Connect(function()
+	vui.Enabled = not vui.Enabled
+end)
+
+Minize.MouseButton1Click:Connect(function()
+	vui.Enabled = false
+end)
 	Icon.Name = "Icon"
 	Icon.Parent = Minize
 	Icon.AnchorPoint = Vector2.new(0.5, 0.5)
