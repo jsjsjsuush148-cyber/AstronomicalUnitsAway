@@ -7318,6 +7318,8 @@ Tag=af.Tag or false,
 TagConfigs={
 TagText=af.TagText or "Toggle Tag",
 TagIcon=af.TagIcon or nil,
+TagRadius=af.TagRadius or 12,
+TagColor=af.TagColor or Color3.fromRGB(0, 255, 255),
 },
 Type=af.Type or"Toggle",
 Callback=af.Callback or function()end,
@@ -7381,12 +7383,12 @@ if ag.Tag then
 local toggletagframing=Instance.new("Frame")
 toggletagframing.Name="TagFrame"
 toggletagframing.Size=UDim2.new(0,80,0,24)
-toggletagframing.BackgroundColor3=Color3.fromRGB(40,40,40)
+toggletagframing.BackgroundColor3=ag.TagConfigs.TagColor
 toggletagframing.BorderSizePixel=0
+toggletagframing.Transparency=0.6
 toggletagframing.AnchorPoint=Vector2.new(1,0)
-toggletagframing.Position=UDim2.new(1,-10,0,5)
+toggletagframing.Position=UDim2.new(1,-50,0,5)
 toggletagframing.Parent=ag.ToggleFrame.UIElements.Main
-
 local toggletagtexting=Instance.new("TextLabel")
 toggletagtexting.Name="TagText"
 toggletagtexting.Text=ag.TagConfigs.TagText
@@ -7394,7 +7396,7 @@ toggletagtexting.Size=UDim2.new(1,0,1,0)
 toggletagtexting.BackgroundTransparency=1
 toggletagtexting.TextColor3=Color3.fromRGB(255,255,255)
 toggletagtexting.TextSize=12
-toggletagtexting.Font=Enum.Font.GothamBold
+toggletagtexting.Font=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
 toggletagtexting.Parent=toggletagframing
 end
 
