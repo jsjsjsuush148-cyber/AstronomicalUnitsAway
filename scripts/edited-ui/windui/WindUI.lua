@@ -10706,7 +10706,7 @@ Size=UDim2.new(1,0,1,0),
 BackgroundTransparency=1,
 TextColor3=Color3.fromRGB(255,255,255),
 TextSize=11,
-Font=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
+FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
 }),
 })
         
