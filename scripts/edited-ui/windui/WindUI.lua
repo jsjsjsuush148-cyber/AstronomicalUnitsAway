@@ -11110,7 +11110,7 @@ TagText=al.TagText or "MultiSectionTag",
 TagColor=al.TagColor or Color3.fromRGB(0,255,255),
 TagSize=al.TagSize or UDim2.new(0,60,0,24),
 TagRadius=al.TagRadius or 8,
-                                        }                        
+},                   
 UIElements={},
 
 HeaderSize=al.HeaderSize or 42,
@@ -11361,9 +11361,9 @@ BackgroundTransparency=1,
 })
 
 local aUw=ad("Frame",{
-Name="SectionTag",
-Size=am.SectionTagConfig.TagSize,
-BackgroundColor3=am.SectionTagConfig.TagColor,
+Name="MultiSectionTag",
+Size=am.MultiSectionTagConfig.TagSize,
+BackgroundColor3=am.MultiSectionTagConfig.TagColor,
 BackgroundTransparency=0.6,
 BorderSizePixel=0,
 Position=UDim2.new(1,-25,0.5,-0),
@@ -11372,11 +11372,11 @@ Parent=d.Top,
 Visible=am.SectionTag,
 },{
 ad("UICorner",{
-CornerRadius=UDim.new(0,am.SectionTagConfig.TagRadius),
+CornerRadius=UDim.new(0,am.MultiSectionTagConfig.TagRadius),
 }),
 ad("TextLabel",{
 Name="TagText",
-Text=am.SectionTagConfig.TagText,
+Text=am.MultiSectionTagConfig.TagText,
 Size=UDim2.new(1,0,1,0),
 BackgroundTransparency=1,
 TextColor3=Color3.fromRGB(255,255,255),
