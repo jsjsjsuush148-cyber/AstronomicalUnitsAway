@@ -7389,6 +7389,10 @@ toggletagframing.Transparency=0.6
 toggletagframing.AnchorPoint=Vector2.new(1,0)
 toggletagframing.Position=UDim2.new(1,-50,0,5)
 toggletagframing.Parent=ag.ToggleFrame.UIElements.Main
+local uicorneringtagtoggle=Instance.new("UICorner")
+uicorneringtagtoggle.Name="TagCorner"
+uicorneringtagtoggle.Radius=UDim.new(0,ag.TagConfig.TagRadius or 12)
+uicorneringtagtoggle.Parent=toggletagframing
 local toggletagtexting=Instance.new("TextLabel")
 toggletagtexting.Name="TagText"
 toggletagtexting.Text=ag.TagConfigs.TagText
@@ -7396,7 +7400,7 @@ toggletagtexting.Size=UDim2.new(1,0,1,0)
 toggletagtexting.BackgroundTransparency=1
 toggletagtexting.TextColor3=Color3.fromRGB(255,255,255)
 toggletagtexting.TextSize=12
-toggletagtexting.Font=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
+toggletagtexting.FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
 toggletagtexting.Parent=toggletagframing
 end
 
