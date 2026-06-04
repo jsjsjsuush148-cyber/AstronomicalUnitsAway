@@ -10611,31 +10611,6 @@ ap,
 at,
 })
 
-local aw=ad("Frame",{
-Name="SectionTag",
-Size=ak.SectionTagConfig.TagSize,
-BackgroundColor3=ak.SectionTagConfig.TagColor,
-BackgroundTransparency=0.6,
-BorderSizePixel=0,
-Position=UDim2.new(1,-120,0.5,-12),
-AnchorPoint=Vector2.new(1,0.5),
-Parent=au,
-Visible=ak.SectionTag,
-},{
-ad("UICorner",{
-CornerRadius=UDim.new(0,ak.SectionTagConfig.TagRadius),
-}),
-ad("TextLabel",{
-Name="TagText",
-Text=ak.SectionTagConfig.TagText,
-Size=UDim2.new(1,0,1,0),
-BackgroundTransparency=1,
-TextColor3=Color3.fromRGB(255,255,255),
-TextSize=11,
-FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
-}),
-})
-
 local av=aa.NewRoundFrame(ai.Window.ElementConfig.UICorner,"Squircle",{
 Size=UDim2.new(1,0,0,0),
 BackgroundTransparency=1,
@@ -10710,6 +10685,31 @@ VerticalAlignment="Top",
 }),
 })
 
+local aw=ad("Frame",{
+Name="SectionTag",
+Size=ak.SectionTagConfig.TagSize,
+BackgroundColor3=ak.SectionTagConfig.TagColor,
+BackgroundTransparency=0.6,
+BorderSizePixel=0,
+Position=UDim2.new(1,-20,0,10),
+AnchorPoint=Vector2.new(1,0),
+Parent=av.Content,
+Visible=ak.SectionTag,
+},{
+ad("UICorner",{
+CornerRadius=UDim.new(0,ak.SectionTagConfig.TagRadius),
+}),
+ad("TextLabel",{
+Name="TagText",
+Text=ak.SectionTagConfig.TagText,
+Size=UDim2.new(1,0,1,0),
+BackgroundTransparency=1,
+TextColor3=Color3.fromRGB(255,255,255),
+TextSize=11,
+Font=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
+}),
+})
+        
 ak.ElementFrame=av
 ak.UIElements={
 Main=av,
