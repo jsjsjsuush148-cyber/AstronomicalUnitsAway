@@ -6668,30 +6668,28 @@ af.UIElements.ButtonIcon.Position=UDim2.new(1,0,0.5,0)
 af.ButtonFrame:Colorize(af.UIElements.ButtonIcon.ImageLabel,"ImageColor3")
 
 if af.ButtonTag then
-local ah=ad("Frame",{
-Name="ButtonTag",
-Size=af.ButtonTagConfig.TagSize,
-BackgroundColor3=af.ButtonTagConfig.TagColor,
-BackgroundTransparency=0.6,
-BorderSizePixel=0,
-Position=UDim2.new(1,-15,0.5,-12),
-AnchorPoint=Vector2.new(1,0.5),
-Parent=af.ButtonFrame.UIElements.Main,
-Visible=af.ButtonTag,
-})
-local corner=Instance.new("UICorner")
-corner.CornerRadius=UDim.new(0,af.ButtonTagConfig.TagRadius)
-corner.Parent=ah
-ad("TextLabel",{
-Name="TagText",
-Text=af.ButtonTagConfig.TagText,
-Size=UDim2.new(1,0,1,0),
-BackgroundTransparency=1,
-TextColor3=Color3.fromRGB(255,255,255),
-TextSize=11,
-FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium),
-Parent=ah
-})
+local ah=Instance.new("Frame")
+ah.Name="ButtonTag"
+ah.Size=af.ButtonTagConfig.TagSize
+ah.BackgroundColor3=af.ButtonTagConfig.TagColor
+ah.BackgroundTransparency=0.6
+ah.BorderSizePixel=0
+ah.Position=UDim2.new(1,-15,0.5,-12)
+ah.AnchorPoint=Vector2.new(1,0.5)
+ah.Parent=af.ButtonFrame.UIElements.Main
+ah.Visible=af.ButtonTag
+local ai=Instance.new("UICorner")
+ai.CornerRadius=UDim.new(0,af.ButtonTagConfig.TagRadius)
+ai.Parent=ah
+local aj=Instance.new("TextLabel")
+aj.Name="TagText"
+aj.Text=af.ButtonTagConfig.TagText
+aj.Size=UDim2.new(1,0,1,0)
+aj.BackgroundTransparency=1
+aj.TextColor3=Color3.fromRGB(255,255,255)
+aj.TextSize=11
+aj.FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
+aj.Parent=ah
 end
 
 function af.Lock(ah)
