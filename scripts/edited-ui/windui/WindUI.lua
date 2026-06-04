@@ -10480,6 +10480,13 @@ HoverFeedback=ai.Hover~=false,
 Opened=ai.Opened or false,
 Locked=ai.Locked or false,
 LockedTitle=ai.LockedTitle,
+SectionTag=ai.SectionTag or false,
+SectionTagConfig={
+TagText=ai.TagText or "SectionTag",
+TagColor=ai.TagColor or Color3.fromRGB(0,255,255),
+TagSize=ai.TagSize or UDim2.new(0,60,0,24),
+TagRadius=ai.TagRadius or 8,
+},
 UIElements={},
 
 HeaderSize=ai.HeaderSize or 42,
@@ -10586,6 +10593,31 @@ HorizontalAlignment="Right",
 Padding=UDim.new(0,6),
 }),
 as,
+})
+
+local aw=ad("Frame",{
+Name="SectionTag",
+Size=ak.SectionTagConfig.TagSize,
+BackgroundColor3=ak.SectionTagConfig.TagColor,
+BackgroundTransparency=0.6,
+BorderSizePixel=0,
+Position=UDim2.new(1,-120,0.5,-12),
+AnchorPoint=Vector2.new(1,0.5),
+Parent=au,
+Visible=ak.SectionTag,
+},{
+ad("UICorner",{
+CornerRadius=UDim.new(0,ak.SectionTagConfig.TagRadius),
+}),
+ad("TextLabel",{
+Name="TagText",
+Text=ak.SectionTagConfig.TagText,
+Size=UDim2.new(1,0,1,0),
+BackgroundTransparency=1,
+TextColor3=Color3.fromRGB(255,255,255),
+TextSize=11,
+FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
+}),
 })
 
 local au=ad("Frame",{
