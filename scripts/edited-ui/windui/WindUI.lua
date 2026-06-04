@@ -6678,10 +6678,10 @@ Position=UDim2.new(1,-15,0.5,-12),
 AnchorPoint=Vector2.new(1,0.5),
 Parent=af.ButtonFrame.UIElements.Main,
 Visible=af.ButtonTag,
-},{
-ad("UICorner",{
-CornerRadius=UDim.new(0,af.ButtonTagConfig.TagRadius),
-}),
+})
+local corner=Instance.new("UICorner")
+corner.CornerRadius=UDim.new(0,af.ButtonTagConfig.TagRadius)
+corner.Parent=ah
 ad("TextLabel",{
 Name="TagText",
 Text=af.ButtonTagConfig.TagText,
@@ -6690,7 +6690,7 @@ BackgroundTransparency=1,
 TextColor3=Color3.fromRGB(255,255,255),
 TextSize=11,
 FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium),
-}),
+Parent=ah
 })
 end
 
