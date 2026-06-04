@@ -6554,6 +6554,13 @@ Title=af.Title or"Paragraph",
 Desc=af.Desc or nil,
 
 Locked=af.Locked or false,
+ParagraphTag=af.ParagraphTag or false,
+ParagraphTagConfig={
+TagText=af.TagText or "TAG",
+TagColor=af.TagColor or Color3.fromRGB(0,255,255),
+TagSize=af.TagSize or UDim2.new(0,60,0,24),
+TagRadius=af.TagRadius or 8,
+},
 }
 local ah=a.D()(af)
 
@@ -6577,6 +6584,30 @@ local al=ad(ak.Title,ak.Icon,ak.Callback,"White",ai,nil,nil,10)
 al.Size=UDim2.new(1,0,0,38)
 
 end
+end
+                                
+if ag.ParagraphTag then
+local ai=Instance.new("Frame")
+ai.Name="ParagraphTag"
+ai.Size=ag.ParagraphTagConfig.TagSize
+ai.BackgroundColor3=ag.ParagraphTagConfig.TagColor
+ai.BackgroundTransparency=0.6
+ai.BorderSizePixel=0
+ai.Position=UDim2.new(1,-15,0,-5)
+ai.AnchorPoint=Vector2.new(1,0)
+ai.Parent=ah.UIElements.Container
+local aj=Instance.new("UICorner")
+aj.CornerRadius=UDim.new(0,ag.ParagraphTagConfig.TagRadius)
+aj.Parent=ai
+local ak=Instance.new("TextLabel")
+ak.Name="TagText"
+ak.Text=ag.ParagraphTagConfig.TagText
+ak.Size=UDim2.new(1,0,1,0)
+ak.BackgroundTransparency=1
+ak.TextColor3=Color3.fromRGB(255,255,255)
+ak.TextSize=11
+ak.FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
+ak.Parent=ai
 end
 
 return ag.__type,ag
