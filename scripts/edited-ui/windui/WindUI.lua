@@ -10595,6 +10595,22 @@ Padding=UDim.new(0,6),
 as,
 })
 
+local au=ad("Frame",{
+Size=UDim2.new(1,0,0,0),
+AutomaticSize="Y",
+BackgroundTransparency=1,
+},{
+ad("UIListLayout",{
+Padding=UDim.new(0,ak.HeaderGap),
+FillDirection="Horizontal",
+VerticalAlignment="Center",
+HorizontalAlignment="Left",
+}),
+ao,
+ap,
+at,
+})
+
 local aw=ad("Frame",{
 Name="SectionTag",
 Size=ak.SectionTagConfig.TagSize,
@@ -10618,22 +10634,6 @@ TextColor3=Color3.fromRGB(255,255,255),
 TextSize=11,
 FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
 }),
-})
-
-local au=ad("Frame",{
-Size=UDim2.new(1,0,0,0),
-AutomaticSize="Y",
-BackgroundTransparency=1,
-},{
-ad("UIListLayout",{
-Padding=UDim.new(0,ak.HeaderGap),
-FillDirection="Horizontal",
-VerticalAlignment="Center",
-HorizontalAlignment="Left",
-}),
-ao,
-ap,
-at,
 })
 
 local av=aa.NewRoundFrame(ai.Window.ElementConfig.UICorner,"Squircle",{
