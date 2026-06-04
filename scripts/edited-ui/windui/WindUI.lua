@@ -10691,9 +10691,9 @@ Size=ak.SectionTagConfig.TagSize,
 BackgroundColor3=ak.SectionTagConfig.TagColor,
 BackgroundTransparency=0.6,
 BorderSizePixel=0,
-Position=UDim2.new(1,-20,0,10),
-AnchorPoint=Vector2.new(1,0),
-Parent=av.Content,
+Position=UDim2.new(1,-15,0.5,-12)
+AnchorPoint=Vector2.new(1,0.5),
+Parent=au,
 Visible=ak.SectionTag,
 },{
 ad("UICorner",{
