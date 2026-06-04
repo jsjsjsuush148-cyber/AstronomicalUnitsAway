@@ -6602,6 +6602,13 @@ Justify=ae.Justify or"Between",
 IconAlign=ae.IconAlign or"Right",
 Locked=ae.Locked or false,
 LockedTitle=ae.LockedTitle,
+ButtonTag=ae.ButtonTag or false,
+ButtonTagConfig={
+TagText=ae.TagText or "BUTTONTAG",
+TagColor=ae.TagColor or Color3.fromRGB(0,255,255),
+TagSize=ae.TagSize or UDim2.new(0,60,0,24),
+TagRadius=ae.TagRadius or 8,
+},
 Callback=ae.Callback or function()end,
 UIElements={}
 }
@@ -6659,6 +6666,33 @@ af.UIElements.ButtonIcon.AnchorPoint=Vector2.new(1,0.5)
 af.UIElements.ButtonIcon.Position=UDim2.new(1,0,0.5,0)
 
 af.ButtonFrame:Colorize(af.UIElements.ButtonIcon.ImageLabel,"ImageColor3")
+
+if af.ButtonTag then
+local ah=ad("Frame",{
+Name="ButtonTag",
+Size=af.ButtonTagConfig.TagSize,
+BackgroundColor3=af.ButtonTagConfig.TagColor,
+BackgroundTransparency=0.6,
+BorderSizePixel=0,
+Position=UDim2.new(1,-15,0.5,-12),
+AnchorPoint=Vector2.new(1,0.5),
+Parent=af.ButtonFrame.UIElements.Main,
+Visible=af.ButtonTag,
+},{
+ad("UICorner",{
+CornerRadius=UDim.new(0,af.ButtonTagConfig.TagRadius),
+}),
+ad("TextLabel",{
+Name="TagText",
+Text=af.ButtonTagConfig.TagText,
+Size=UDim2.new(1,0,1,0),
+BackgroundTransparency=1,
+TextColor3=Color3.fromRGB(255,255,255),
+TextSize=11,
+FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium),
+}),
+})
+end
 
 function af.Lock(ah)
 af.Locked=true
