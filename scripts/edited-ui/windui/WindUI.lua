@@ -11104,6 +11104,13 @@ HoverFeedback=al.Hover~=false,
 Opened=al.Opened or false,
 Locked=al.Locked or false,
 LockedTitle=al.LockedTitle,
+MultiSectionTag=al.MultiSectionTag or false,
+MultiSectionTagConfig={
+TagText=al.TagText or "MultiSectionTag",
+TagColor=al.TagColor or Color3.fromRGB(0,255,255),
+TagSize=al.TagSize or UDim2.new(0,60,0,24),
+TagRadius=al.TagRadius or 8,
+                                        }                        
 UIElements={},
 
 HeaderSize=al.HeaderSize or 42,
@@ -11350,6 +11357,31 @@ Size=UDim2.new(1,0,0,0),
 AutomaticSize="Y",
 BackgroundTransparency=1,
 }),
+}),
+})
+
+local aUw=ad("Frame",{
+Name="SectionTag",
+Size=am.SectionTagConfig.TagSize,
+BackgroundColor3=am.SectionTagConfig.TagColor,
+BackgroundTransparency=0.6,
+BorderSizePixel=0,
+Position=UDim2.new(1,-25,0.5,-0),
+AnchorPoint=Vector2.new(1,0.5),
+Parent=d.Top,
+Visible=am.SectionTag,
+},{
+ad("UICorner",{
+CornerRadius=UDim.new(0,am.SectionTagConfig.TagRadius),
+}),
+ad("TextLabel",{
+Name="TagText",
+Text=am.SectionTagConfig.TagText,
+Size=UDim2.new(1,0,1,0),
+BackgroundTransparency=1,
+TextColor3=Color3.fromRGB(255,255,255),
+TextSize=11,
+FontFace=Font.new("rbxassetid://12187365364", Enum.FontWeight.Medium)
 }),
 })
 
