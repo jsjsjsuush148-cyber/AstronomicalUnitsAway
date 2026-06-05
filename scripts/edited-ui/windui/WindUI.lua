@@ -11697,7 +11697,7 @@ r=0.5
 u=0.2
 else
 l=1
-m=1
+m=ResolveTransparency("TabBorderTransparency",0.6)
 p=0.4
 r=0.6
 u=0.35
