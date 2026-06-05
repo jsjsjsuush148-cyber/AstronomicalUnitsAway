@@ -11697,7 +11697,7 @@ r=0.5
 u=0.2
 else
 l=1
-m=ResolveTransparency("TabBorderTransparency",0.6)
+m=0.6
 p=0.4
 r=0.6
 u=0.35
@@ -11962,11 +11962,11 @@ Parent=am.UIElements.TabsScroll,
 },{
 aa.NewRoundFrame(math.max(al.Window.ElementConfig.UICorner-2,6),al.Window.ModernLayout and"Glass-1.4"or"SquircleOutline",{
 Size=UDim2.new(1,0,1,0),
-BackgroundTransparency=ResolveTransparency("TabBorderTransparency",0.6),
+BackgroundTransparency=,
 ThemeTag={
 ImageColor3="TabBorder",
 },
-ImageTransparency=1,
+ImageTransparency=0.6,
 Name="Outline",
 }),
 ad("Frame",{
