@@ -11962,7 +11962,7 @@ Parent=am.UIElements.TabsScroll,
 },{
 aa.NewRoundFrame(math.max(al.Window.ElementConfig.UICorner-2,6),al.Window.ModernLayout and"Glass-1.4"or"SquircleOutline",{
 Size=UDim2.new(1,0,1,0),
-BackgroundTransparency=1,
+BackgroundTransparency=ResolveTransparency("TabBorderTransparency",0.6),
 ThemeTag={
 ImageColor3="TabBorder",
 },
