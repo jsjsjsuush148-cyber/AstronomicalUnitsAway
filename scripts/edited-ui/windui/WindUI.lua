@@ -6560,6 +6560,7 @@ ParagraphTagConfig={
 TagText=af.TagText or "TAG",
 TagColor=af.TagColor or Color3.fromRGB(0,255,255),
 TagSize=af.TagSize or UDim2.new(0,60,0,24),
+TagPositio=af.TagPosition or UDim2.new(1,-15,0,-5),
 TagRadius=af.TagRadius or 8,
 },
 }
@@ -6594,7 +6595,7 @@ ai.Size=ag.ParagraphTagConfig.TagSize
 ai.BackgroundColor3=ag.ParagraphTagConfig.TagColor
 ai.BackgroundTransparency=0.6
 ai.BorderSizePixel=0
-ai.Position=UDim2.new(1,-15,0,-5)
+ai.Position=ag.ParagraphTagConfig.TagPosition or UDim2.new(1,-15,0,-5)
 ai.AnchorPoint=Vector2.new(1,0)
 ai.Parent=ah.UIElements.Container
 local aj=Instance.new("UICorner")
@@ -6639,6 +6640,7 @@ ButtonTagConfig={
 TagText=ae.TagText or "BUTTONTAG",
 TagColor=ae.TagColor or Color3.fromRGB(0,255,255),
 TagSize=ae.TagSize or UDim2.new(0,60,0,24),
+TagPosition=ae.TagPosition or UDim2.new(1,-27,0.5,0),
 TagRadius=ae.TagRadius or 8,
 },
 Callback=ae.Callback or function()end,
@@ -6706,7 +6708,7 @@ ah.Size=af.ButtonTagConfig.TagSize
 ah.BackgroundColor3=af.ButtonTagConfig.TagColor
 ah.BackgroundTransparency=0.6
 ah.BorderSizePixel=0
-ah.Position=UDim2.new(1,-27,0.5,0)
+ah.Position=af.ButtonTagConfig.TagPosition or UDim2.new(1,-27,0.5,0)
 ah.AnchorPoint=Vector2.new(1,0.5)
 ah.Parent=af.ButtonFrame.UIElements.Main
 ah.Visible=af.ButtonTag
@@ -7378,10 +7380,11 @@ LockedTitle=af.LockedTitle,
 Value=af.Value,
 Icon=af.Icon or nil,
 IconSize=af.IconSize or 23,
-Tag=af.Tag or false,
+ToggleTag=af.ToggleTag or false,
 TagConfigs={
 TagText=af.TagText or "Toggle Tag",
-TagIcon=af.TagIcon or nil,
+TagSize=af.TagSize or UDim2.new(0,80,0,24),
+TagPosition=af.TagPosition or UDim2.new(1,-50,0,5),
 TagRadius=af.TagRadius or 12,
 TagColor=af.TagColor or Color3.fromRGB(0, 255, 255),
 },
@@ -7443,15 +7446,15 @@ end
 aj.AnchorPoint=Vector2.new(1,0.5)
 aj.Position=UDim2.new(1,0,0.5,0)
 
-if ag.Tag then
+if ag.ToggleTag then
 local toggletagframing=Instance.new("Frame")
 toggletagframing.Name="TagFrame"
-toggletagframing.Size=UDim2.new(0,80,0,24)
+toggletagframing.Size=ag.TagConfigs.TagSize or UDim2.new(0,80,0,24)
 toggletagframing.BackgroundColor3=ag.TagConfigs.TagColor
 toggletagframing.BorderSizePixel=0
 toggletagframing.Transparency=0.6
 toggletagframing.AnchorPoint=Vector2.new(1,0)
-toggletagframing.Position=UDim2.new(1,-50,0,5)
+toggletagframing.Position=ag.TagConfigs.TagPosition or UDim2.new(1,-50,0,5)
 toggletagframing.Parent=ag.ToggleFrame.UIElements.Main
 local uicorneringtagtoggle=Instance.new("UICorner")
 uicorneringtagtoggle.Name="TagCorner"
@@ -10549,6 +10552,7 @@ SectionTagConfig={
 TagText=ai.TagText or "SectionTag",
 TagColor=ai.TagColor or Color3.fromRGB(0,255,255),
 TagSize=ai.TagSize or UDim2.new(0,60,0,24),
+TagPosition=ai.TagPosition or UDim2.new(1,-25,0.5,-0),
 TagRadius=ai.TagRadius or 8,
 },
 UIElements={},
@@ -10755,7 +10759,7 @@ Size=ak.SectionTagConfig.TagSize,
 BackgroundColor3=ak.SectionTagConfig.TagColor,
 BackgroundTransparency=0.6,
 BorderSizePixel=0,
-Position=UDim2.new(1,-25,0.5,-0),
+Position=ak.SectionTagConfig.TagPosition or UDim2.new(1,-25,0.5,-0),
 AnchorPoint=Vector2.new(1,0.5),
 Parent=av.Top,
 Visible=ak.SectionTag,
@@ -11173,6 +11177,7 @@ MultiSectionTagConfig={
 TagText=al.TagText or "MultiSectionTag",
 TagColor=al.TagColor or Color3.fromRGB(0,255,255),
 TagSize=al.TagSize or UDim2.new(0,60,0,24),
+TagPosition=al.TagPosition or UDim2.new(1,-25,0.5,-0),
 TagRadius=al.TagRadius or 8,
 },                   
 UIElements={},
@@ -11430,7 +11435,7 @@ Size=am.MultiSectionTagConfig.TagSize,
 BackgroundColor3=am.MultiSectionTagConfig.TagColor,
 BackgroundTransparency=0.6,
 BorderSizePixel=0,
-Position=UDim2.new(1,-25,0.5,-0),
+Position=am.MultiSectionTagConfig.TagPosition or UDim2.new(1,-25,0.5,-0),
 AnchorPoint=Vector2.new(1,0.5),
 Parent=d.Top,
 Visible=am.SectionTag,
