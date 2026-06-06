@@ -11691,13 +11691,13 @@ r=0.35
 u=0
 elseif h=="Hover"then
 l=ResolveTransparency("TabBackgroundHoverTransparency",0.97)
-m=ResolveTransparency("TabBorderTransparency",1)
+m=ResolveTransparency("TabBorderTransparency",0.975)
 p=0.25
 r=0.5
 u=0.2
 else
 l=1
-m=0.6
+m=0.95
 p=0.4
 r=0.6
 u=0.35
@@ -11966,7 +11966,7 @@ BackgroundTransparency=1,
 ThemeTag={
 ImageColor3="TabBorder",
 },
-ImageTransparency=0.6,
+ImageTransparency=0.95,
 Name="Outline",
 }),
 ad("Frame",{
