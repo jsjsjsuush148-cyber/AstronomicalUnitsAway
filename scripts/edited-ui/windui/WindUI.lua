@@ -11438,7 +11438,7 @@ BorderSizePixel=0,
 Position=am.MultiSectionTagConfig.TagPosition or UDim2.new(1,-25,0.5,-0),
 AnchorPoint=Vector2.new(1,0.5),
 Parent=d.Top,
-Visible=am.SectionTag,
+Visible=am.MultiSectionTag,
 },{
 ad("UICorner",{
 CornerRadius=UDim.new(0,am.MultiSectionTagConfig.TagRadius),
